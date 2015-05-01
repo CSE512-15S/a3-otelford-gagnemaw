@@ -20,6 +20,13 @@
            onclick="Day()" />
 </div>
 
+<div id="option3">
+    <input name="MonthButton" 
+           type="button" 
+           value="Month of Year" 
+           onclick="Month()" />
+</div>
+
 </head>
 
 <title>San Francisco Bike Share Usage</title>
@@ -76,7 +83,7 @@ var parseDateHour = d3.time.format("%H").parse;
 
 var parseDateDay = d3.time.format("%d").parse;
 
-var parseDateMonth = d3.time.format("%b").parse;
+var parseDateMonth = d3.time.format("%m-%y").parse;
 
 var x = d3.time.scale()
     .range([0, width]);
@@ -283,6 +290,62 @@ function Day() {
 
     });
 }
+
+
+function Month() {
+
+    // Get the data again
+    d3.tsv("totalmonth.tsv", function(error, data) {
+  color.domain(d3.keys(data[0]).filter(function(key) { return key !== "date"; }));
+
+  data.forEach(function(d) {
+    d.date = parseDateMonth(d.date);
+  });
+
+  var routes = color.domain().map(function(name) {
+    return {
+      name: name,
+      values: data.map(function(d) {
+        return {date: d.date, number: +d[name]};
+      })
+    };
+  });
+
+
+    // Scale the range of the data again 
+  x.domain(d3.extent(data, function(d) { return d.date; }));
+
+  y.domain([
+    d3.min(routes, function(c) { return d3.min(c.values, function(v) { return v.number; }); }),
+    d3.max(routes, function(c) { return d3.max(c.values, function(v) { return v.number; }); })
+  ]);
+
+
+    // Select the section we want to apply our changes to
+    var svg = d3.select("body").transition();
+
+
+    // Make the changes
+       // svg.selectAll(".line")   // change the line
+       //     .duration(750)
+       //     .attr("d", function(d) { return line(d.values); });
+        svg.select(".x.axis") // change the x axis
+            .duration(750)
+            .call(xAxis);
+        svg.select(".y.axis") // change the y axis
+            .duration(750)
+            .call(yAxis);
+
+    	d3.selectAll(".line")   // change the line
+		.data(routes)
+		.transition()
+            .duration(750)
+            .attr("d", function(d) { return line(d.values); });
+
+    });
+}
+
+
 
 </script>
 
