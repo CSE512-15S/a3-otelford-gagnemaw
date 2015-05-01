@@ -210,12 +210,6 @@ function Hour() {
 
     // Select the section we want to apply our changes to
     var svg = d3.select("body").transition();
-
-        svg.selectAll(".line")   // change the line
-            .duration(750)
-            .attr("d", function(d) { return line(d.values); });
-
-
 	    
         svg.select(".x.axis") // change the x axis
             .duration(750)
@@ -223,6 +217,14 @@ function Hour() {
         svg.select(".y.axis") // change the y axis
             .duration(750)
             .call(yAxis);
+
+    	d3.selectAll(".line")   // change the line
+		.data(routes)
+		.transition()
+            .duration(750)
+            .attr("d", function(d) { return line(d.values); });
+
+debugger;
 
     });
 }
@@ -263,15 +265,21 @@ function Day() {
 
 
     // Make the changes
-        svg.selectAll(".line")   // change the line
-            .duration(750)
-            .attr("d", function(d) { return line(d.values); });
+       // svg.selectAll(".line")   // change the line
+       //     .duration(750)
+       //     .attr("d", function(d) { return line(d.values); });
         svg.select(".x.axis") // change the x axis
             .duration(750)
             .call(xAxis);
         svg.select(".y.axis") // change the y axis
             .duration(750)
             .call(yAxis);
+
+    	d3.selectAll(".line")   // change the line
+		.data(routes)
+		.transition()
+            .duration(750)
+            .attr("d", function(d) { return line(d.values); });
 
     });
 }
