@@ -4,31 +4,6 @@
 
 <h1>San Francisco Bike Share Usage</h1>
 
-<head>
-
-<div id="option1">
-    <input name="HourButton" 
-           type="button" 
-           value="Time of Day" 
-           onclick="Hour()" />
-</div>
-
-<div id="option2">
-    <input name="DayButton" 
-           type="button" 
-           value="Day of Week" 
-           onclick="Day()" />
-</div>
-
-<div id="option3">
-    <input name="MonthButton" 
-           type="button" 
-           value="Month of Year" 
-           onclick="Month()" />
-</div>
-
-</head>
-
 <title>San Francisco Bike Share Usage</title>
 
 
@@ -70,9 +45,49 @@ div.tooltip {
   pointer-events: none;         
 }
 
+h1{
+  font-size: 28px;
+}
+
+p{
+  font-size: 14px;
+  width: 960px;
+}
+
+
 </style>
 <body>
 <script src="http://d3js.org/d3.v3.js"></script>
+
+<p>This graphic shows the number of rides along the ten most popular routes between San Francisco bike share stations as a function of time. Use the buttons below to see the breakdown of rides versus different units of time. Scroll over the lines to see the start and end points. </p>
+
+<TABLE BORDER="0">
+<TR>
+<TD>
+    <input name="HourButton" 
+           type="button" 
+           value="Time of Day" 
+           onclick="Hour()" />
+</TD>	
+
+<TD>
+    <input name="DayButton" 
+           type="button" 
+           value="Day of Week" 
+           onclick="Day()" />
+ </TD>
+
+<TD>
+    <input name="MonthButton" 
+           type="button" 
+           value="Month of Year" 
+           onclick="Month()" />
+</TD>
+
+</TR>
+
+</TABLE>
+
 <script>
 
 var margin = {top: 20, right: 80, bottom: 30, left: 50},
@@ -179,7 +194,7 @@ d3.tsv("totalday.tsv", function(error, data) {
         d3.select(this).style("stroke-width","6");
         d3.select(this).style("font-size","20");
         d3.select(this).style("opacity","0.9");
-        d3.select(this).style("stroke","red");
+        d3.select(this).style("stroke","darkorange");
         div.transition()        
           .duration(200)      
           .style("opacity", .9);      
@@ -188,7 +203,7 @@ d3.tsv("totalday.tsv", function(error, data) {
           .style("top", (d3.event.pageY -28) + "px");})
       .on("mouseout", function(d) {
           d3.select(this).style("stroke-width","1.5"); 
-          d3.select(this).style("stroke",function(d) { return color("blue"); });
+          d3.select(this).style("stroke",function(d) { return color("steelblue"); });
           d3.select(this).style("opacity","0.6");
           div.transition()        
             .duration(200)      
