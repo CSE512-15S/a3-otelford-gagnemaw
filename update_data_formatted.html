@@ -59,7 +59,7 @@ p{
 <body>
 <script src="http://d3js.org/d3.v3.js"></script>
 
-<p>This graphic shows the number of rides along the ten most popular routes between San Francisco bike share stations as a function of time. Use the buttons below to see the breakdown of rides versus different units of time. Scroll over the lines to see the start and end points. </p>
+<p>This graphic shows the number of rides along the ten most popular routes between San Francisco bike share stations during the first six months. Use the buttons below to see the breakdown of rides versus different units of time. Scroll over the lines to see the start and end points. </p>
 
 <TABLE BORDER="0">
 <TR>
@@ -252,10 +252,10 @@ function Hour() {
             .call(yAxis);
 
     	d3.selectAll(".line")   // change the line
-		.data(routes)
-		.transition()
-            .duration(750)
-            .attr("d", function(d) { return line(d.values); });
+	    .data(routes)
+	    .transition()
+              .duration(750)
+              .attr("d", function(d) { return line(d.values); });
 
     });
 }
