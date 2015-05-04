@@ -12,7 +12,7 @@ This visualization aims to answer the question: when are people using the Bay Ar
 
 The graphic shows the number of riders along the top 10 most used routes in the Bay Area binned by different units of time: (1) hour of the day, (2) day of the week, and (3) month of the year. The buttons allow the user to switch between these three views. The user can scroll over each line to see the start and end points of the route. Clicking on the line changes its color, which persists through transitions between the different views so that the user can explore the different trends for a given interesting route.
 
-We used the first six months of data from the [Bay Area Bike Share](http://www.bayareabikeshare.com/datachallenge).
+We used the first six months of data from the [Bay Area Bike Share](http://www.bayareabikeshare.com/datachallenge). Our visualization uses the start and end points of all the bike trips during that time, as well as the start and end times of those trips.
 
 ## Running Instructions
 
@@ -29,6 +29,8 @@ Our initial plan for this visualization is to create line graphs of number of ri
 We chose a line graph because this is a natural way of presenting temporal data. The highlighting allows a user to focus on any interesting trend that jumps out at them, and this combined with the "details on demand" facilitates data exploration.
 
 If we achieve this goal early enough, we will then expand our visualization to include data from Washington, D.C. and Boston. The user can then compare trends across different cities (which may be particularly interesting in the case of seasonal trends).
+
+Our story board diagram can be viewed [here](Storyboard.pdf?raw=true).
 
 
 ### Changes between Storyboard and the Final Implementation
