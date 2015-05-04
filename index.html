@@ -25,6 +25,10 @@ body {
 .x.axis path {
   display: none;
 }
+.axis text {
+    font-family: sans-serif;
+    font-size: 12px;
+}
 
 .line {
   fill: none;
@@ -99,7 +103,7 @@ p{
 <script>
 
 var margin = {top: 20, right: 80, bottom: 30, left: 50},
-    width = 960 - margin.left - margin.right,
+    width = 1050 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
 
 var parseDateHour = d3.time.format("%H").parse;
@@ -183,7 +187,7 @@ d3.tsv("totalday.tsv", function(error, data) {
       .call(yAxis)
     .append("text")
       .attr("transform", "rotate(-90)")
-      .attr("font-size", 15)
+      .attr("font-size", 20)
       .attr("y", -45)
       .attr("x", -40)
       .attr("dy", ".71em")
