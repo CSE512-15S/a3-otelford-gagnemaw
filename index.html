@@ -25,6 +25,7 @@ body {
 .x.axis path {
   display: none;
 }
+
 .axis text {
     font-family: sans-serif;
     font-size: 12px;
@@ -88,6 +89,7 @@ p{
            value="Month of Year" 
            onclick="Month()" />
 </TD>
+
 
 <TD>
     <input name="Reset" 
@@ -227,7 +229,6 @@ d3.tsv("totalday.tsv", function(error, data) {
         d3.select(this).style("stroke","darkorange");})
 
 
-
 });
 
 function Hour() {
@@ -268,7 +269,6 @@ function Hour() {
         svg.select(".y.axis") // change the y axis
             .duration(750)
             .call(yAxis);
-
 
     	d3.selectAll(".line")   // change the line
 	    .data(routes)
@@ -378,6 +378,7 @@ function Month() {
     });
 }
 
+
 function Reset() {
 
     // Get the data again
@@ -398,15 +399,8 @@ function Reset() {
   });
 
 
-
-
-
     // Select the section we want to apply our changes to
     var svg = d3.select("body").transition();
-
-
-
- 
 
       d3.selectAll(".line")   // change the line
             //.data(routes)
@@ -417,9 +411,6 @@ function Reset() {
 
     });
 }
-
-
-
 
 
 </script>
